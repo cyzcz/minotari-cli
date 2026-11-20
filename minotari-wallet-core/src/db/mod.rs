@@ -51,13 +51,14 @@ use std::{env::current_dir, fs};
 use include_dir::{Dir, include_dir};
 use log::{debug, error, info};
 use r2d2::Pool;
-use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::Connection;
 use rusqlite_migration::Migrations;
 
+mod connection_manager;
 mod error;
 pub(crate) mod sqlite_amount;
 mod sqlite_time;
+pub use connection_manager::SqliteConnectionManager;
 pub use error::{WalletDbError, WalletDbResult};
 
 mod accounts;

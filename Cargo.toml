@@ -3,7 +3,7 @@ resolver = "2"
 members = [
     "minotari",
     "minotari-wallet-core",
-    # "integration-tests", # disabled until diesel supports libsqlite3-sys 0.39 (diesel-rs/diesel#5372), see README
+    "integration-tests",
     "minotari-scanning"
 ]
 
@@ -16,18 +16,22 @@ repository = "https://github.com/tari-project/minotari-cli"
 
 
 [workspace.dependencies]
-tari_common = { version = "6.3.0-pre.4"}
-tari_common_types = { version = "6.3.0-pre.4" }
+tari_common = { version = "6.3.0-pre.5"}
+tari_common_types = { version = "6.3.0-pre.5" }
 tari_crypto = { version = "0.24.1", features = ["borsh"] }
 tari_utilities = { version = "0.10", features = ["std"] }
-tari_script = { version = "6.3.0-pre.4" }
+tari_script = { version = "6.3.0-pre.5" }
 tari_sidechain = { version = "9.0" }
-tari_transaction_components = { version = "6.3.0-pre.4" }
-minotari_app_grpc = { version = "6.3.0-pre.4", default-features = false }
-tari_node_components = { version = "6.3.0-pre.4" }
+tari_transaction_components = { version = "6.3.0-pre.5" }
+minotari_app_grpc = { version = "6.3.0-pre.5", default-features = false }
+tari_node_components = { version = "6.3.0-pre.5" }
 minotari-scanning = { path = "minotari-scanning", version = "0.6.0", default-features = false }
 
 [profile.release]
 # By default, Rust will wrap an integer in release mode instead of throwing the overflow error
 # seen in debug mode. Panicking at this time is better than silently using the wrong value.
 overflow-checks = true
+
+[patch.crates-io]
+# shortcut: unreleased cljoly/rusqlite_migration#376 (rusqlite 0.43), switch to the crates.io release once published.
+rusqlite_migration = { git = "https://github.com/xuxiaocheng0201/rusqlite_migration", rev = "db851f4f6bf1152bbf46b0ae5ee1745916b52cc9" }

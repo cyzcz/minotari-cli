@@ -52,13 +52,13 @@
 //! }).await?;
 //! ```
 
+use crate::db::SqliteConnectionManager;
 use crate::db::{self, SqlitePool, WalletDbError};
 use crate::models::Id;
 use crate::scan::DisplayedTransactionsEvent;
 use crate::transactions::{DisplayedTransaction, ProcessorError, TransactionDisplayStatus};
 use log::debug;
 use r2d2::PooledConnection;
-use r2d2_sqlite::SqliteConnectionManager;
 
 /// Errors that can occur during transaction history operations.
 ///

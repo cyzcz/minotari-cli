@@ -55,10 +55,10 @@ pub fn trigger_webhook_with_balance(
 mod tests {
     #![allow(clippy::indexing_slicing)]
     use super::*;
+    use crate::db::SqliteConnectionManager;
     use crate::db::{create_account, get_account_by_name, init_db, insert_balance_change, insert_wallet_event};
     use crate::models::{BalanceChange, WalletEvent, WalletEventType};
     use r2d2::PooledConnection;
-    use r2d2_sqlite::SqliteConnectionManager;
     use tari_common_types::seeds::cipher_seed::CipherSeed;
     use tari_common_types::types::FixedHash;
     use tari_transaction_components::key_manager::wallet_types::{SeedWordsWallet, WalletType};
