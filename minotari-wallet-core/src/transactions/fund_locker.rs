@@ -921,7 +921,7 @@ mod tests {
         let pool = r2d2::Pool::builder()
             .max_size(5)
             .connection_timeout(std::time::Duration::from_secs(10))
-            .build(r2d2_sqlite::SqliteConnectionManager::file(temp.path().join("test.db")))
+            .build(crate::db::SqliteConnectionManager::file(temp.path().join("test.db")))
             .expect("build pool");
 
         let failures: Vec<String> = std::thread::scope(|scope| {

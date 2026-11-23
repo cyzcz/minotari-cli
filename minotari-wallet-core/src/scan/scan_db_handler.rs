@@ -1,3 +1,4 @@
+use crate::db::SqliteConnectionManager;
 use crate::{
     ScanError, WalletEvent,
     db::{SqlitePool, WalletDbError, is_other_block_scanned_at_height, prune_scanned_tip_blocks},
@@ -6,7 +7,6 @@ use crate::{
 };
 use log::{debug, error};
 use r2d2::PooledConnection;
-use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::TransactionBehavior;
 use std::sync::Arc;
 

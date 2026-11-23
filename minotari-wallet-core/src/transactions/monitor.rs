@@ -67,11 +67,11 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
 
+use crate::db::SqliteConnectionManager;
 use anyhow::{Result, anyhow};
 use chrono::Utc;
 use log::{info, trace, warn};
 use r2d2::PooledConnection;
-use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::{Connection, TransactionBehavior};
 use tari_common_types::payment_reference::generate_payment_reference;
 use tari_common_types::types::FixedHash;

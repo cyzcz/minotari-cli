@@ -73,11 +73,11 @@
 //! }
 //! ```
 
+use crate::db::SqliteConnectionManager;
 use anyhow::anyhow;
 use chrono::Utc;
 use log::{error, info, trace, warn};
 use r2d2::PooledConnection;
-use r2d2_sqlite::SqliteConnectionManager;
 use rusqlite::Connection;
 use tari_common::configuration::Network;
 use tari_common_types::types::FixedHash;
@@ -1527,7 +1527,7 @@ mod tests {
         time::Duration,
     };
 
-    use r2d2_sqlite::SqliteConnectionManager;
+    use crate::db::SqliteConnectionManager;
     use rusqlite::named_params;
     use tari_common_types::{
         seeds::cipher_seed::CipherSeed,
